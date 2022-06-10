@@ -1,5 +1,8 @@
 name: ci
 
+env:
+  CONFIG_REPO_NAME: argocd-course-webapp-config
+  
 on:
   push:
     branches:
@@ -42,11 +45,11 @@ jobs:
     needs: docker-build-push
     steps:
       - run: |
-          echo "deployig into dev environment!"
+          echo "promoting into dev environment!"
           git config --global user.email ci-bot@argocd.com && git config --global user.name ci-bot
-          echo "cloning config repo"
-          git clone https://oauth2:${{ secrets.GH_PAT }}@github.com/mabusaa/argocd-course-webapp-config.git
-          cd argocd-course-webapp-config
+          echo "cloning config repo $CONFIG_REPO_NAME"
+          git clone https://oauth2:${{ secrets.GH_PAT }}@github.com/${{ github.repository_owner }}/$CONFIG_REPO_NAME.git
+          cd $CONFIG_REPO_NAME
           echo "checkout main branch"
           git checkout main
           echo "updating image tag in values file"
