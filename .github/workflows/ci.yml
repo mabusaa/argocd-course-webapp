@@ -6,7 +6,11 @@ on:
       - 'main'
 
 jobs:
-  docker:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "building and testing the app ..."
+  docker-build-push:
     runs-on: ubuntu-latest
     steps:
       -
