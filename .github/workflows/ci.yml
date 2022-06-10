@@ -35,4 +35,4 @@ jobs:
           context: .
           file: WebApplication1/Dockerfile
           push: true
-          tags: mabusaa/argocd-course-webapp:${GIT_SHA}
+          tags: mabusaa/argocd-course-webapp:${{ github.sha }}
