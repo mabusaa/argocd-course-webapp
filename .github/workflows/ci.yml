@@ -36,3 +36,19 @@ jobs:
           file: WebApplication1/Dockerfile
           push: true
           tags: mabusaa/argocd-course-webapp:${{ github.sha }}
+  promote-to-dev-environment:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "deployig into dev environment!"
+          git config --global user.email ci-bot@argocd.com && git config --global user.name ci-bot
+          echo "cloning config repo"
+          git clone https://oauth2:${{ secrets.GH_PAT }}@github.com/mabusaa/argocd-course-webapp-config.git
+          cd argocd-course-webapp-config
+          echo "checkout main branch"
+          git checkout main
+          echo "updating image tag in values file"
+          sed -i "s,tag:.*,tag:\ ${{ github.sha }}," helm/webapp/values.yaml
+          git add . && git commit -m "update image tag"
+          git push
+
