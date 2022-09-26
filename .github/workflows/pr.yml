@@ -49,8 +49,8 @@ jobs:
           echo "checkout source branch"
           git checkout ${{ github.event.pull_request.head.ref }}
           echo "updating image tag in values file"
-          sed -i "s,tag:.*,tag:\ ${{ github.event.pull_request.head.ref }}," helm/webapp/values.yaml
-          git add . && git commit -m "update image tag"
+          sed -i "s,tag:.*,tag:\ ${{ github.event.pull_request.head.sha }}," helm/webapp/values.yaml
+          git add . && git commit -m "update image tag [skip ci]"
           git push
 
 
