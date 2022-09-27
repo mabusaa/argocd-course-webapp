@@ -52,6 +52,15 @@ jobs:
           sed -i "s,tag:.*,tag:\ ${{ github.event.pull_request.head.sha }}," helm/webapp/values.yaml
           git add . && git commit -m "update image tag [skip ci]"
           git push
+  add_labels:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-ecosystem/action-add-labels@v1
+        if: ${{ startsWith(github.event.comment.body, '/add-labels') }}
+        with:
+          labels: |
+            preview
 
 
 
