@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: jucardona-nisum/argocd-course-webapp
+  repository: nachocardona/argocd-course-webapp
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "9dbc07045cd3502b9863803b21356cd5ec2a93eb"
+  tag: "639da268c57816fa1ea347bbf499f4bd76837fc2"
 
 imagePullSecrets: []
 nameOverride: ""
