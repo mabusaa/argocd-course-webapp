@@ -8,7 +8,7 @@ image:
   repository: hetulplayground/argocd-course-webapp
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 3bed068f9f73ce1c6b5c7bd0f7799e202c3d69e0
+  tag: 2be57cc32b4d157b464f0ae459afe862a5830ac5
 
 imagePullSecrets: []
 nameOverride: ""
