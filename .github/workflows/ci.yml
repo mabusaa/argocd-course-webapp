@@ -12,34 +12,31 @@ jobs:
   build-test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "building and testing the app ..."
+      - run: echo "building and testing the app here..."
+  
   docker-build-push:
     runs-on: ubuntu-latest
     needs: build-test
     steps:
-      -
-        name: Checkout
+      - name: Checkout
         uses: actions/checkout@v2
-      -
-        name: Set up QEMU
+      - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
-      -
-        name: Set up Docker Buildx
+      - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
-      -
-        name: Login to DockerHub
-        uses: docker/login-action@v1
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      -
-        name: Build and push
+      - name: Build and push
         uses: docker/build-push-action@v2
         with:
           context: .
           file: WebApplication1/Dockerfile
           push: true
-          tags: mabusaa/argocd-course-webapp:${{ github.sha }}
+          tags: sakshirathoree/argocd-course-webapp:${{ github.sha }}
+
   promote-to-dev-environment:
     runs-on: ubuntu-latest
     needs: docker-build-push
@@ -56,4 +53,3 @@ jobs:
           sed -i "s,tag:.*,tag:\ ${{ github.sha }}," helm/webapp/values.yaml
           git add . && git commit -m "update image tag"
           git push
-
