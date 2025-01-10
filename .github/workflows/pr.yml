@@ -9,7 +9,7 @@ jobs:
   build-test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "building and testing the app ..."
+      - run: echo "building and testing the app again ..."
   docker-build-push:
     runs-on: ubuntu-latest
     needs: build-test
