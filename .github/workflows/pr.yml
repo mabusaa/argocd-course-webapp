@@ -27,8 +27,8 @@ jobs:
         name: Login to DockerHub
         uses: docker/login-action@v1
         with:
-          username: ${{ kkbalajius }}
-          password: ${{ dckr_pat_yYpdZVEsfof-TG9Xg9gS9ukr7Mo }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Build and push
         uses: docker/build-push-action@v2
@@ -44,7 +44,7 @@ jobs:
       - run: |
           git config --global user.email ci-bot@argocd.com && git config --global user.name ci-bot
           echo "cloning app repo"
-          git clone https://oauth2:${{ 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 }}@github.com/${{ github.repository_owner }}/argocd-course-webapp.git
+          git clone https://oauth2:${{ secrets.GH_PAT }}@github.com/${{ github.repository_owner }}/argocd-course-webapp.git
           cd argocd-course-webapp
           echo "checkout source branch"
           git checkout ${{ github.event.pull_request.head.ref }}
