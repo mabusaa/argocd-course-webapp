@@ -39,7 +39,7 @@ jobs:
           context: .
           file: WebApplication1/Dockerfile
           push: true
-          tags: 4n-nt/argocd-course-webapp:${{ github.sha }}
+          tags: ngthienan/argocd-demo:${{ github.sha }}
   promote-to-dev-environment:
     runs-on: ubuntu-latest
     needs: docker-build-push
