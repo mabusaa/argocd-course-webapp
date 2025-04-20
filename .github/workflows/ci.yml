@@ -30,8 +30,8 @@ jobs:
         name: Login to DockerHub
         uses: docker/login-action@v1
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          username: yanone1
+          password: Nitaydj@2019
       -
         name: Build and push
         uses: docker/build-push-action@v2
@@ -39,7 +39,7 @@ jobs:
           context: .
           file: WebApplication1/Dockerfile
           push: true
-          tags: mabusaa/argocd-course-webapp:${{ github.sha }}
+          tags: yanone1/argocd-course-webapp:${{ github.sha }}
   promote-to-dev-environment:
     runs-on: ubuntu-latest
     needs: docker-build-push
