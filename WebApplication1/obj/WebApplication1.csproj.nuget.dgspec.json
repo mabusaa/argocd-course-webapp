@@ -24,7 +24,6 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.abp.io/b0b2a177-15eb-4130-a787-53996bcb9554/v3/index.json": {},
           "https://www.myget.org/F/blazorise/api/v3/index.json": {}
         },
         "frameworks": {
