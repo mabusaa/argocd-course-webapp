@@ -33,8 +33,8 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: .
-          file: WebApplication1/Dockerfile
+          context: app
+          file: app/Dockerfile
           push: true
           tags: libiamel/argocd-course-webapp:${{ github.event.pull_request.head.sha }}
   update-image-tag-in-helm:
