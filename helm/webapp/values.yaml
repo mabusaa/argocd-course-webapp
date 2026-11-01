@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: libialany/argocd-course-webapp
+  repository: libiamel/argocd-course-webapp
   tag: latest
 
 service:
