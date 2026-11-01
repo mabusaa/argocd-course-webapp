@@ -1,3 +1,4 @@
+# MULTIENV
 FROM golang:1.27-alpine AS build
 WORKDIR /src
 COPY go.mod webapp.go ./
